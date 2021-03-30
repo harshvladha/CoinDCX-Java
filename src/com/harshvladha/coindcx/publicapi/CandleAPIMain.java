@@ -1,7 +1,7 @@
 package com.harshvladha.coindcx.publicapi;
 
 import java.io.IOException;
-import java.sql.Date;
+import java.util.Date;
 import java.time.Instant;
 
 public class CandleAPIMain {
