@@ -1,0 +1,9 @@
+.settings
+.project
+.env
+.classpath
+.vscode
+.factorypath
+target/
+doc/
+res/
