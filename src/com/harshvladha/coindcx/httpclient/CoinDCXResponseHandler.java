@@ -1,24 +1,15 @@
 package com.harshvladha.coindcx.httpclient;
 
-import java.io.IOException;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import okhttp3.Response;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
  * Response handler for handling all the responses.
  */
 public class CoinDCXResponseHandler {
-    private static final String CONTENT_TYPE = "Content-Type";
-    private static final String JSON = "json";
+    private static final ObjectMapper objectMapper = new ObjectMapper();;
+    public <D> D handle(String body, Class<D> responseType) throws JsonProcessingException {
+        return objectMapper.readValue(body, responseType);
+    }
 
-    public JSONObject handle(Response response, String body) throws JSONException {
-        if (null != response.header(CONTENT_TYPE) && response.header(CONTENT_TYPE).contains(JSON)) {
-            return new JSONObject(body);
-        }
-
-        throw new JSONException("Unknown Response Format");
-    } 
 }

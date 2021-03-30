@@ -1,15 +1,10 @@
 package com.harshvladha.coindcx.publicapi;
 
-import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-
 import com.harshvladha.coindcx.httpclient.CoinDCXRequestHandler;
-
 import org.json.JSONException;
-import org.json.JSONObject;
+
+import java.io.IOException;
+import java.util.*;
 
 public class CandleAPI {
     private static final String HOST = "https://public.coindcx.com";
@@ -23,15 +18,15 @@ public class CandleAPI {
      * @return HistoricalData object which contains list of historical data termed as dataArrayList.
      * @throws IOException is thrown when there is connection related error.
      * */
-    public JSONObject getHistoricalData(Date from, Date to, String token, String interval) throws IOException, JSONException {
+    public CoinCandle[] getHistoricalData(Date from, Date to, String token, String interval) throws IOException, JSONException {
         
         Map<String, Object> params = new HashMap<>();
-        params.put("from", from.toInstant().getEpochSecond());
-        params.put("to", to.toInstant().getEpochSecond());
-        params.put("pairs", token);
+        params.put("startTime", from.toInstant().toEpochMilli());
+        params.put("endTime", to.toInstant().toEpochMilli());
+        params.put("pair", token);
         params.put("interval", interval);
 
         CoinDCXRequestHandler requestHandler = new CoinDCXRequestHandler();
-        return requestHandler.getRequest(HOST+ENDPOINT, params);
+        return requestHandler.getRequest(HOST+ENDPOINT, params, CoinCandle[].class);
     }
 }
