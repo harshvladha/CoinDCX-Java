@@ -6,11 +6,13 @@ import java.util.Map;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import lombok.NoArgsConstructor;
 import okhttp3.HttpUrl;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
+@NoArgsConstructor
 public class CoinDCXRequestHandler {
     private static final String USER_AGENT = "harshvladha/coindcx-api/1.0.0";
 

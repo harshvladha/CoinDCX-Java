@@ -17,6 +17,6 @@ public class CoinDCXResponseHandler {
             return new JSONObject(body);
         }
 
-        throw new JSONException("Unknown Response Format")
+        throw new JSONException("Unknown Response Format");
     } 
 }

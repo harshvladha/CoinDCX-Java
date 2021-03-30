@@ -5,6 +5,10 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.harshvladha.coindcx.httpclient.CoinDCXRequestHandler;
+
+import org.json.JSONObject;
+
 public class CandleAPI {
     private static final String HOST = "https://public.coindcx.com";
     private static final String ENDPOINT = "/market_data/candles";
@@ -18,16 +22,14 @@ public class CandleAPI {
      * @return HistoricalData object which contains list of historical data termed as dataArrayList.
      * @throws IOException is thrown when there is connection related error.
      * */
-    public HistoricalData getHistoricalData(Date from, Date to, String token, String interval) throws IOException, JSONException {
+    public JSONObject getHistoricalData(Date from, Date to, String token, String interval) throws IOException, JSONException {
         
         Map<String, Object> params = new HashMap<>();
         params.put("from", dateFormatter.format(from));
         params.put("to", dateFormatter.format(to));
         params.put("pairs", token);
 
-        String url = routes.get("market.historical").replace(":instrument_token", token).replace(":interval", interval);
-        HistoricalData historicalData = new HistoricalData();
-        historicalData.parseResponse(kiteRequestHandler.getRequestWithEnc(url, params, apiKey, encToken));
-        return historicalData;
+        CoinDCXRequestHandler requestHandler = new CoinDCXRequestHandler();
+        return requestHandler.getRequest(HOST+ENDPOINT, params);
     }
 }
