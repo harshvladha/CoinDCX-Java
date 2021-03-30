@@ -1,5 +1,6 @@
 package com.harshvladha.coindcx.publicapi;
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -7,6 +8,7 @@ import java.util.Map;
 
 import com.harshvladha.coindcx.httpclient.CoinDCXRequestHandler;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class CandleAPI {
