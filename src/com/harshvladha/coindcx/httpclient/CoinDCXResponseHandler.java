@@ -11,9 +11,10 @@ import okhttp3.Response;
  * Response handler for handling all the responses.
  */
 public class CoinDCXResponseHandler {
-    
+    private static final String CONTENT_TYPE = "Content-Type";
+    private static final String JSON = "json";
     public JSONObject handle(Response response, String body) throws IOException, JSONException {
-        if (response.header("Content-Type").contains("json")) {
+        if (null != response.header(CONTENT_TYPE) && response.header(CONTENT_TYPE).contains(JSON)) {
             return new JSONObject(body);
         }
 
