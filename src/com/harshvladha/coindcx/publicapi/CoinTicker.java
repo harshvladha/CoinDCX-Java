@@ -58,6 +58,29 @@ public class CoinTicker {
     public void connect() {
         ws.connect();
     }
+
+    public void setTickListener(Consumer<List<CoinTick>> tickListener) {
+        this.tickListener = tickListener;
+    }
+
+    public void subscribe(Set<String> channels) {
+        subscribedChannels.addAll(channels);
+        for (String channel : channels) {
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("channelName", channel);
+            ws.emit("join", jsonObject);
+        }
+    }
+
+    public void unsubscribe(List<String> channels) {
+        subscribedChannels.addAll(channels);
+        for (String channel : channels) {
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("channelName", channel);
+            ws.emit("leave", jsonObject);
+        }
+    }
+
     private void setOnError() {
         ws.on(Socket.EVENT_ERROR, objects -> {
             log.error("CoinDCX Socket : Error while event");
@@ -102,28 +125,6 @@ public class CoinTicker {
         ws.on(Socket.EVENT_RECONNECT_FAILED, objects -> {
             log.error("CoinDCX Socket : Reconnect failed.");
         });
-    }
-
-    void setTickListener(Consumer<List<CoinTick>> tickListener) {
-        this.tickListener = tickListener;
-    }
-
-    void subscribe(Set<String> channels) {
-        subscribedChannels.addAll(channels);
-        for (String channel : channels) {
-            JSONObject jsonObject = new JSONObject();
-            jsonObject.put("channelName", channel);
-            ws.emit("join", jsonObject);
-        }
-    }
-
-    void unsubscribe(List<String> channels) {
-        subscribedChannels.addAll(channels);
-        for (String channel : channels) {
-            JSONObject jsonObject = new JSONObject();
-            jsonObject.put("channelName", channel);
-            ws.emit("leave", jsonObject);
-        }
     }
 }
 
