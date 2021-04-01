@@ -8,6 +8,18 @@ CoinDCX gives these two as public API but over HTTP or WebSockets, read their [d
 
 ## Usage
 
+### Maven
+
+For latest version, checkout [Packages](https://github.com/harshvladha/CoinDCX-Java/packages)
+
+```xml
+<dependency>
+    <groupId>com.harshvladha</groupId>
+    <artifactId>coindcx</artifactId>
+    <version>1.0.2</version>
+</dependency>
+```
+
 ### Historical API
 
 ```java
