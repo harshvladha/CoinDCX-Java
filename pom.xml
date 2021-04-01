@@ -3,7 +3,7 @@
 	
 	<groupId>com.harshvladha</groupId>
 	<artifactId>coindcx</artifactId>
-	<version>1.0.0</version>
+	<version>1.0.1-SNAPSHOT</version>
 	
 	<properties>
         <lombok.version>1.18.16</lombok.version>
@@ -48,7 +48,7 @@
 		<developerConnection>
 			scm:git:git@github.com:harshvladha/CoinDCX-Java.git
 		</developerConnection>
-	  <tag>coindcx-1.0.0</tag>
+	  <tag>HEAD</tag>
   </scm>
 
 	<dependencies>
