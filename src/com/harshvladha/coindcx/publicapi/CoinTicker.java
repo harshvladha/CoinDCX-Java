@@ -10,6 +10,7 @@ import lombok.extern.log4j.Log4j2;
 import org.json.JSONObject;
 
 import java.net.URI;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -81,6 +82,11 @@ public class CoinTicker {
         }
     }
 
+    public void destroy() {
+        ws.disconnect();
+        ws.close();
+    }
+
     private void setOnError() {
         ws.on(Socket.EVENT_ERROR, objects -> {
             log.error("CoinDCX Socket : Error while event");
@@ -113,7 +119,7 @@ public class CoinTicker {
 
     private void setOnDisconnect() {
         ws.on(Socket.EVENT_DISCONNECT, objects -> {
-            log.error("CoinDCX Socket : Got disconnected.");
+            log.error(String.format("CoinDCX Socket : Got disconnected. %s", Instant.now()));
         });
     }
 

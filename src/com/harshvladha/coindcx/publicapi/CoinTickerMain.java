@@ -9,7 +9,8 @@ public class CoinTickerMain {
         coinTicker.connect();
         coinTicker.subscribe(new HashSet<>() {{add("B-BTC_USDT");}});
         coinTicker.setTickListener(System.out::println);
-        Thread.sleep(10000);
+        Thread.sleep(3000);
         coinTicker.unsubscribe(new ArrayList<>() {{add("B-BTC_USDT");}});
+        coinTicker.destroy();
     }
 }
