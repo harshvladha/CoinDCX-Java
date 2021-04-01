@@ -10,7 +10,7 @@ CoinDCX gives these two as public API but over HTTP or WebSockets, read their [d
 
 ### Maven
 
-For latest version, checkout [Packages](https://github.com/harshvladha/CoinDCX-Java/packages)
+This is not a typical Maven central package, so you will have to go through the pain of using [Github Packages](https://docs.github.com/en/packages/guides/configuring-apache-maven-for-use-with-github-packages) (if not already)
 
 ```xml
 <dependency>
@@ -19,6 +19,8 @@ For latest version, checkout [Packages](https://github.com/harshvladha/CoinDCX-J
     <version>1.0.2</version>
 </dependency>
 ```
+
+For latest version, checkout [Packages](https://github.com/harshvladha/CoinDCX-Java/packages)
 
 ### Historical API
 
