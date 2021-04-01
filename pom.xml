@@ -8,7 +8,10 @@
 	
 	<properties>
         <lombok.version>1.18.16</lombok.version>
+		<log4j.version>2.14.1</log4j.version>
 		<okhttp.version>4.9.0</okhttp.version>
+		<jackson.databind.version>2.11.2</jackson.databind.version>
+		<socket.io.version>1.0.1</socket.io.version>
     </properties>
 
 	<build>
@@ -33,22 +36,22 @@
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
-			<version>2.11.2</version>
+			<version>${jackson.databind.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>io.socket</groupId>
 			<artifactId>socket.io-client</artifactId>
-			<version>1.0.1</version>
+			<version>${socket.io.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-api</artifactId>
-			<version>2.14.1</version>
+			<version>${log4j.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-core</artifactId>
-			<version>2.14.1</version>
+			<version>${log4j.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.squareup.okhttp3</groupId>
